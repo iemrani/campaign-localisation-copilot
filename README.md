@@ -2,7 +2,7 @@
 
 An agentic AI workflow that helps a multinational coffee brand localise global marketing campaigns for multiple markets with human approvals, compliance checks, and telemetry.  
 
-Designed as a portfolio project to demonstrate the skills required for an **Agentic AI Productivity Specialist** working in a Microsoft‑centric environment (Microsoft 365, Power Platform, Azure OpenAI). [web:16][web:28]
+Designed as a portfolio project to demonstrate the skills required for an **Agentic AI Productivity Specialist** working in a Microsoft‑centric environment (Microsoft 365, Power Platform, Azure OpenAI).
 
 ---
 
@@ -19,9 +19,9 @@ This copilot shows how **agentic AI** can streamline that process while respecti
 - Automates the heavy lifting of localisation and first drafts  
 - Keeps **humans in the loop** for approvals and edits  
 - Enforces **compliance and Responsible AI** principles (audit trail, PII awareness, versioning)  
-- Produces **telemetry** so the business can measure impact (time saved, approval speed, common issues) [web:16][web:28][web:49]
+- Produces **telemetry** so the business can measure impact (time saved, approval speed, common issues)
 
-The design and vocabulary are aligned with Microsoft’s guidance on **agentic AI business solutions** (focus on architecture, trade‑offs, governance, and lifecycle over just prompts). [web:37][web:39]
+The design and vocabulary are aligned with Microsoft’s guidance on **agentic AI business solutions** (focus on architecture, trade‑offs, governance, and lifecycle over just prompts).
 
 ---
 
@@ -62,13 +62,13 @@ The solution is implemented as a **multi-step agentic workflow**:
      - Most common compliance issues  
    - Exposes data for dashboards and continuous improvement  
 
-This workflow reflects how agentic AI solutions are described in the Lavazza JD and in Microsoft’s agentic AI architecture training: multi‑agent orchestration, human‑in‑the‑loop, and measurable business value. [web:16][web:28][web:37][web:39]
+This workflow reflects how agentic AI solutions are described in the target role's job description and in Microsoft’s agentic AI architecture training: multi‑agent orchestration, human‑in‑the‑loop, and measurable business value.
 
 ---
 
 ## 3. Architecture overview
 
-> ⚠️ This repo is implemented as a **local developer PoC** (laptop‑friendly). The README also explains how it maps 1:1 to the **Microsoft stack** (Microsoft 365, Power Platform, Azure OpenAI) for a production deployment. [web:16][web:28][web:39]
+> ⚠️ This repo is implemented as a **local developer PoC** (laptop‑friendly). The README also explains how it maps 1:1 to the **Microsoft stack** (Microsoft 365, Power Platform, Azure OpenAI) for a production deployment.
 
 ### 3.1 Components
 
@@ -86,7 +86,7 @@ This workflow reflects how agentic AI solutions are described in the Lavazza JD 
 
 - **LLM / Agent Layer**  
   - Pluggable client (e.g., Claude or Azure OpenAI) wrapped in `llm_client.py`  
-  - Prompts are written as **functions/tools** with clear responsibilities, mirroring Microsoft’s agent framework style (agents + tools). [web:47][web:50]  
+  - Prompts are written as **functions/tools** with clear responsibilities, mirroring Microsoft’s agent framework style (agents + tools).  
 
 - **Data & Logging**  
   - SQLite (dev) with a simple schema for:  
@@ -103,9 +103,9 @@ This workflow reflects how agentic AI solutions are described in the Lavazza JD 
 
 ---
 
-## 4. Mapping to Microsoft ecosystem (how it would run at Lavazza)
+## 4. Mapping to Microsoft ecosystem (how it would run in an enterprise Microsoft estate)
 
-Although the repo runs locally, it is intentionally designed to slot into a **Microsoft‑centric enterprise environment**: [web:16][web:28][web:39]
+Although the repo runs locally, it is intentionally designed to slot into a **Microsoft‑centric enterprise environment**:
 
 - **Files & Storage**  
   - Campaign briefs & brand guidelines → SharePoint / OneDrive  
@@ -122,13 +122,13 @@ Although the repo runs locally, it is intentionally designed to slot into a **Mi
     - Approvals via **Teams adaptive cards**  
 
 - **LLM & Agentic Layer**  
-  - The local `llm_client.py` abstraction is designed to be swapped to **Azure OpenAI** + Microsoft Agent Framework providers in production, following patterns from Azure OpenAI Agents documentation. [web:36][web:47][web:50]  
+  - The local `llm_client.py` abstraction is designed to be swapped to **Azure OpenAI** + Microsoft Agent Framework providers in production, following patterns from Azure OpenAI Agents documentation.  
 
 - **Telemetry & Monitoring**  
   - SQLite + logs in the PoC → **Application Insights / Log Analytics** in production  
   - Telemetry exported for **Power BI** dashboards to show: time saved, adoption, reliability, and common compliance pain points  
 
-This mapping is documented so that the project not only demonstrates coding skills, but also **architecture thinking** aligned with Microsoft’s agentic AI business solutions certification path. [web:37][web:39]
+This mapping is documented so that the project not only demonstrates coding skills, but also **architecture thinking** aligned with Microsoft’s agentic AI business solutions certification path.
 
 ---
 
@@ -188,13 +188,13 @@ Implemented (or planned) in `workflows.py` as explicit steps:
 6. `compute_telemetry(campaign_id)`  
    - Aggregates metrics used by the Telemetry page.  
 
-This explicit workflow lets you talk convincingly about **orchestration and agent patterns** (state machines, multi-agent flows, error handling) in interviews. [web:16][web:28][web:39]
+This explicit workflow lets you talk convincingly about **orchestration and agent patterns** (state machines, multi-agent flows, error handling) in interviews.
 
 ---
 
 ## 7. Security, privacy, and Responsible AI
 
-This is a personal PoC, but it is designed to demonstrate a **Responsible AI mindset**, as requested in the job description: [web:16][web:28][web:37]
+This is a personal PoC, but it is designed to demonstrate a **Responsible AI mindset**, as requested in the job description:
 
 - **Data minimization**  
   - Only campaign‑related content is stored.  
@@ -248,10 +248,10 @@ You can configure the API base URL in a `.env` or config file in `frontend/src`.
 Planned or suggested extensions:
 
 - Add **document upload from SharePoint / OneDrive** using Microsoft Graph instead of local files.  
-- Host agent logic in **Azure Functions** and integrate with **Power Automate** for approvals. [web:39][web:49]  
-- Replace the local LLM client with **Azure OpenAI** and Microsoft Agent Framework providers. [web:36][web:47][web:50]  
+- Host agent logic in **Azure Functions** and integrate with **Power Automate** for approvals.  
+- Replace the local LLM client with **Azure OpenAI** and Microsoft Agent Framework providers.  
 - Enrich telemetry with user adoption metrics and A/B tests of different agent prompts.  
-- Extend to ESG/sustainability report drafting using campaign and operations data. [web:34][web:49]  
+- Extend to ESG/sustainability report drafting using campaign and operations data.  
 
 ---
 
@@ -259,10 +259,10 @@ Planned or suggested extensions:
 
 This project is intentionally designed to show:
 
-- **Agent design & orchestration**: Multi-step workflow, explicit states, tools, and agents. [web:16][web:28][web:37]  
-- **Business alignment**: Solves a realistic productivity problem for global marketing teams at a company like Lavazza. [web:22][web:24][web:26]  
-- **Microsoft mindset**: Every component is mapped to Microsoft 365, Power Platform, Azure OpenAI, and agent frameworks. [web:16][web:36][web:39][web:47]  
-- **Responsible AI & governance**: PII awareness, logging, human approvals, and audit trail built‑in from day one. [web:16][web:28][web:34][web:49]  
-- **End‑to‑end ownership**: From UX and data model to deployment mapping and telemetry, matching the “design, deploy, and run” expectations of the role. [web:16][web:28]  
+- **Agent design & orchestration**: Multi-step workflow, explicit states, tools, and agents.  
+- **Business alignment**: Solves a realistic productivity problem for global marketing teams at a global consumer-brand marketing organisation.  
+- **Microsoft mindset**: Every component is mapped to Microsoft 365, Power Platform, Azure OpenAI, and agent frameworks.  
+- **Responsible AI & governance**: PII awareness, logging, human approvals, and audit trail built‑in from day one.  
+- **End‑to‑end ownership**: From UX and data model to deployment mapping and telemetry, matching the “design, deploy, and run” expectations of the role.  
 
 You can walk through this repo in interviews to demonstrate how you think about **agentic AI productivity solutions** in a real enterprise context.

@@ -54,7 +54,7 @@ class VariantRead(BaseModel):
     channel_id:     int
     generated_text: Optional[str] = None
     status:         VariantStatus
-    risk_flags:     dict
+    risk_flags:     Any
     version:        int
     created_at:     datetime
 

@@ -1,7 +1,17 @@
 import json
+import re
 from typing import Any, Dict
 
 from .config import settings
+
+
+def _parse_json(text: str) -> Dict[str, Any]:
+    # strip markdown code fences if present
+    text = text.strip()
+    match = re.search(r"```(?:json)?\s*([\s\S]*?)```", text)
+    if match:
+        text = match.group(1).strip()
+    return json.loads(text)
 
 try:
     from anthropic import Anthropic
@@ -97,7 +107,7 @@ GUIDELINES:
             messages=[{"role": "user", "content": prompt}],
         )
         text = response.content[0].text
-        return json.loads(text)
+        return _parse_json(text)
 
     def generate_local_copy(self, spec: Dict[str, Any], market_name: str, language: str, channel_name: str) -> Dict[str, Any]:
         if not self.client:
@@ -114,8 +124,10 @@ Create localized marketing copy for:
 Campaign spec:
 {json.dumps(spec, ensure_ascii=False, indent=2)}
 
-Return strict JSON with keys:
-generated_text, reasoning, risk_flags
+Return strict JSON with exactly these keys:
+- generated_text: string — the final marketing copy
+- reasoning: string — brief explanation of localisation choices
+- risk_flags: object with boolean values, e.g. {{"missing_disclaimer": false, "tone_issue": false, "claim_risk": false}}
 """
         response = self.client.messages.create(
             model=self.model,
@@ -123,7 +135,14 @@ generated_text, reasoning, risk_flags
             messages=[{"role": "user", "content": prompt}],
         )
         text = response.content[0].text
-        return json.loads(text)
+        result = _parse_json(text)
+        # normalise risk_flags to dict regardless of LLM output shape
+        rf = result.get("risk_flags", {})
+        if isinstance(rf, list):
+            result["risk_flags"] = {item: True for item in rf}
+        elif not isinstance(rf, dict):
+            result["risk_flags"] = {}
+        return result
 
     def check_compliance(self, generated_text: str) -> Dict[str, Any]:
         if not self.client:
@@ -144,4 +163,4 @@ Marketing copy:
             messages=[{"role": "user", "content": prompt}],
         )
         text = response.content[0].text
-        return json.loads(text)
+        return _parse_json(text)

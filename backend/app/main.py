@@ -24,6 +24,16 @@ from .workflows import (
 
 app = FastAPI(title="Campaign Localisation Copilot")
 
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173",
+                   "http://localhost:5174", "http://127.0.0.1:5174"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 @app.on_event("startup")
 def on_startup():
@@ -150,3 +160,9 @@ def list_markets(db: Session = Depends(get_db)):
 @app.get("/channels")
 def list_channels(db: Session = Depends(get_db)):
     return db.query(Channel).all()
+
+from .models import CampaignVariant
+
+@app.get("/campaigns/{campaign_id}/variants", response_model=list[VariantRead])
+def get_campaign_variants(campaign_id: int, db: Session = Depends(get_db)):
+    return db.query(CampaignVariant).filter(CampaignVariant.campaign_id == campaign_id).all()
