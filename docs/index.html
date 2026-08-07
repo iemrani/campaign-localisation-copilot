@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Global Campaign Localisation Copilot</title>
+<meta name="description" content="An agentic AI workflow that localises global marketing campaigns across markets and channels, with human approvals, compliance checks and an audit trail.">
+<style>
+  :root {
+    --bg: #0b1622;
+    --panel: #12233a;
+    --panel-hover: #172c48;
+    --border: #1e3a5c;
+    --text: #e8eef6;
+    --muted: #93a7bf;
+    --accent: #d9a441;
+    --accent-dim: #8a6a2a;
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #f7f5f1;
+      --panel: #ffffff;
+      --panel-hover: #fdfaf4;
+      --border: #e2dbd0;
+      --text: #1b2430;
+      --muted: #5d6b7d;
+      --accent: #a8761b;
+      --accent-dim: #c9a86a;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 72px 24px 96px; }
+  .eyebrow {
+    font-size: 12px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--accent); font-weight: 600; margin: 0 0 14px;
+  }
+  h1 { font-size: clamp(28px, 5vw, 42px); line-height: 1.15; margin: 0 0 18px; font-weight: 650; letter-spacing: -.02em; }
+  .lede { font-size: clamp(16px, 2.2vw, 19px); color: var(--muted); margin: 0 0 14px; max-width: 62ch; }
+  .run { font-size: 15px; color: var(--muted); margin: 0 0 44px; max-width: 62ch; }
+  .run strong { color: var(--text); font-weight: 600; }
+  .grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+  a.card {
+    display: block; padding: 22px 24px; text-decoration: none; color: inherit;
+    background: var(--panel); border: 1px solid var(--border); border-radius: 12px;
+    transition: background .15s ease, border-color .15s ease, transform .15s ease;
+  }
+  a.card:hover { background: var(--panel-hover); border-color: var(--accent-dim); transform: translateY(-2px); }
+  a.card:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .card h2 { margin: 0 0 6px; font-size: 17px; font-weight: 620; letter-spacing: -.01em; }
+  .card h2 .arrow { color: var(--accent); font-weight: 400; }
+  .card p { margin: 0; font-size: 14.5px; color: var(--muted); line-height: 1.55; }
+  .primary { border-color: var(--accent-dim); }
+  footer {
+    margin-top: 52px; padding-top: 24px; border-top: 1px solid var(--border);
+    font-size: 13px; color: var(--muted); line-height: 1.65;
+  }
+  footer a { color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="eyebrow">Portfolio project</p>
+  <h1>Global Campaign Localisation Copilot</h1>
+
+  <p class="lede">
+    An agentic AI workflow that takes a single marketing brief and produces localised
+    campaign assets across markets and channels, with human approvals, automated
+    compliance checks and a full audit trail.
+  </p>
+
+  <p class="run">
+    One run ingests a brief, extracts a structured spec with a language model, then
+    generates <strong>nine localised drafts across three markets and three channels</strong>,
+    flagging every claim that violates the brief's own rules.
+  </p>
+
+  <div class="grid">
+
+    <a class="card primary" href="./academy/">
+      <h2>Interactive masterclass <span class="arrow">&rarr;</span></h2>
+      <p>Walk through the architecture, agent design, data model and governance decisions,
+         step by step. Available in English and Italian.</p>
+    </a>
+
+    <a class="card" href="https://github.com/iemrani/campaign-localisation-copilot">
+      <h2>Source code <span class="arrow">&rarr;</span></h2>
+      <p>Full repository: backend, frontend, architecture notes and roadmap.</p>
+    </a>
+
+    <a class="card" href="https://github.com/iemrani/campaign-localisation-copilot/blob/main/docs/screenshots/README.md">
+      <h2>Screenshots <span class="arrow">&rarr;</span></h2>
+      <p>Nine captioned screens from the deployed build, showing real output from a real run.</p>
+    </a>
+
+    <a class="card" href="https://campaign-hub-production-b0c4.up.railway.app">
+      <h2>Live application <span class="arrow">&rarr;</span></h2>
+      <p>The running deployment. Hosted on a small budget for evaluation; if it is
+         unavailable, the screenshots show the same build.</p>
+    </a>
+
+  </div>
+
+  <footer>
+    Independent portfolio prototype. Not affiliated with, endorsed by, or produced for
+    any company whose brand appears in the interface. Every campaign, brief, claim,
+    persona and data point shown is fictional.
+  </footer>
+
+</div>
+</body>
+</html>
