@@ -6,6 +6,54 @@ Designed as a portfolio project to demonstrate the skills required for an **Agen
 
 ---
 
+## See it running
+
+**Live demo:** https://campaign-hub-production-b0c4.up.railway.app
+
+> **On the branding.** This is an independent portfolio prototype. It is not affiliated
+> with, endorsed by, or produced for Lavazza or any other company. The brand appears in
+> the interface as a realistic stand-in because the project was built against a real job
+> posting rather than a toy brief. Every campaign, brief, claim, persona and data point
+> shown is fictional.
+
+Deployed on Railway with Postgres. Migrations run automatically on container start.
+The screenshots below are from that deployment, not from local dev, and every screen
+shows real output from a real run: one brief ingested, extracted by the model, then
+**nine localised drafts generated across three markets and three channels**, each passed
+through the compliance checker.
+
+### The model reads the brief and extracts a structured spec
+
+![Campaign workspace](docs/screenshots/02-campaign-workspace.png)
+
+Product, tone of voice, key messages, mandatory claims and forbidden claims, all pulled
+out of an unstructured brief by the ingestion agent.
+
+### It generates localised assets and flags compliance problems
+
+![Localised drafts with compliance flags](docs/screenshots/03-localised-drafts-compliance.png)
+
+Nine assets in Italian, French and German. The flags are the compliance agent acting on
+claims declared in the brief: `100% Arabica` and `Rainforest Alliance certified` are
+mandatory, `boosts immunity`, `antioxidant` and `best in the world` are forbidden.
+
+### Every decision is auditable
+
+![Audit log](docs/screenshots/05-audit-log.png)
+
+Append-only trail with actor, entity, action, payload and timestamp, exportable to CSV.
+This is the part that makes the workflow usable in a regulated setting rather than a demo.
+
+**All nine screenshots**, with a caption for each screen, are in
+[`docs/screenshots/`](docs/screenshots/README.md): pipeline and intake, campaign
+workspace, drafts and compliance, review queue, audit log, telemetry, review detail,
+light theme, and Italian interface localisation.
+
+> The live instance runs on a small budget and is intended for evaluation. If it is
+> unavailable, the screenshots above show the same build.
+
+---
+
 ## 1. Why this project
 
 Global brands run campaigns across dozens of countries, languages, and channels. Moving from a **master campaign brief** to **localised assets** (emails, social posts, POS materials) usually requires slow email threads, copy/paste, and repeated re‑work between:
