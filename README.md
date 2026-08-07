@@ -44,6 +44,14 @@ mandatory, `boosts immunity`, `antioxidant` and `best in the world` are forbidde
 Append-only trail with actor, entity, action, payload and timestamp, exportable to CSV.
 This is the part that makes the workflow usable in a regulated setting rather than a demo.
 
+### Walk through how it works
+
+**Interactive masterclass:** https://iemrani.github.io/campaign-localisation-copilot/academy/
+
+A standalone tutorial app that explains the architecture, the agent design, the data
+model and the governance decisions, step by step. Static, zero dependencies, available
+in English and Italian. Source in [`academy/`](academy/).
+
 **All nine screenshots**, with a caption for each screen, are in
 [`docs/screenshots/`](docs/screenshots/README.md): pipeline and intake, campaign
 workspace, drafts and compliance, review queue, audit log, telemetry, review detail,
