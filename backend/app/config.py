@@ -7,7 +7,7 @@ class Settings(BaseSettings):
     # LLM
     llm_provider: str = "claude"           # swap to "azure_openai" later
     anthropic_api_key: str = ""
-    claude_model: str = "claude-haiku-4-5-20251001"
+    claude_model: str = "claude-sonnet-5"
 
     # Database
     database_url: str = "sqlite:///./copilot.sqlite3"
