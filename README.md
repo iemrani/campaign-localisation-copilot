@@ -8,7 +8,7 @@ Designed as a portfolio project to demonstrate the skills required for an **Agen
 
 ## See it running
 
-**Live demo:** https://campaign-hub-production-b0c4.up.railway.app
+**Live demo:** https://campaign-copilot.style.dev
 
 > **On the branding.** This is an independent portfolio prototype. It is not affiliated
 > with, endorsed by, or produced for Lavazza or any other company. The brand appears in

@@ -24,6 +24,16 @@ from .workflows import (
 
 app = FastAPI(title="Campaign Localisation Copilot")
 
+from .config import settings
+from . import ratelimit
+
+# Registered here so it wraps every LLM-backed route below.
+ratelimit.install(
+    app,
+    per_ip_per_hour=settings.rate_limit_per_ip_per_hour,
+    global_per_day=settings.rate_limit_global_per_day,
+)
+
 from fastapi.middleware.cors import CORSMiddleware
 
 app.add_middleware(
@@ -166,3 +176,26 @@ from .models import CampaignVariant
 @app.get("/campaigns/{campaign_id}/variants", response_model=list[VariantRead])
 def get_campaign_variants(campaign_id: int, db: Session = Depends(get_db)):
     return db.query(CampaignVariant).filter(CampaignVariant.campaign_id == campaign_id).all()
+
+# ── Static frontend ──────────────────────────────────────────────────────────
+# Registered last on purpose: FastAPI matches routes in registration order, so
+# every API route above wins before the SPA catch-all sees the request.
+
+import os
+
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
+
+_STATIC = os.path.abspath(settings.static_dir)
+
+if os.path.isdir(_STATIC):
+    app.mount("/assets", StaticFiles(directory=os.path.join(_STATIC, "assets")), name="assets")
+
+    @app.get("/{full_path:path}", include_in_schema=False)
+    def spa(full_path: str):
+        # A real file (favicon, vite.svg) is served as itself; anything else is a
+        # client-side route and gets index.html so a deep link survives a refresh.
+        candidate = os.path.normpath(os.path.join(_STATIC, full_path))
+        if candidate.startswith(_STATIC) and os.path.isfile(candidate):
+            return FileResponse(candidate)
+        return FileResponse(os.path.join(_STATIC, "index.html"))

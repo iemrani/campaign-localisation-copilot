@@ -26,3 +26,6 @@ pnpm-debug.log*
 
 # Misc
 *.sqlite3
+
+# Built frontend, copied in at deploy time
+backend/static/
